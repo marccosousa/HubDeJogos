@@ -11,6 +11,7 @@ namespace HubDeJogos.JogoDaVelha.Models
         public string Simbolo { get; private set; }
         public bool Finalizada { get; private set; }
         public string[,] Mat { get; private set; }
+        public int Turno { get; private set; }
 
         public PartidaVelha(Hub hub)
         {
@@ -21,6 +22,7 @@ namespace HubDeJogos.JogoDaVelha.Models
             JogadorAtual = Jogador1; 
             Simbolo = "X"; 
             Finalizada = false;
+            Turno = 1; 
             OrganizaVelha(); 
         }
 
@@ -41,7 +43,8 @@ namespace HubDeJogos.JogoDaVelha.Models
             {
                 return; 
             }
-            MudarJogador(); 
+            MudarJogador();
+            Turno++; 
         }
 
         private void ValidaJogada(string posicao)
@@ -75,7 +78,7 @@ namespace HubDeJogos.JogoDaVelha.Models
 
         private bool FimDeJogo()
         {
-            // Se o jogo terminar em alguma linha: 
+            // Se o jogo terminar em alguma linha:
             for (int L = 0; L < 3; L++)
             {
                 if (Mat[L, 0] == Mat[L, 1] && Mat[L, 1] == Mat[L, 2])

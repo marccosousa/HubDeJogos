@@ -20,11 +20,13 @@ namespace HubDeJogos.JogoDaVelha.Views
             }
 
             Console.WriteLine();
+            Console.WriteLine("Turno: " + p.Turno);
+            Console.WriteLine();
             Console.WriteLine($"{p.Jogador1.Nome} - X vs O - {p.Jogador2.Nome}");
             if (!p.Finalizada)
             {
                 Console.WriteLine("Aguardando vez do " + p.JogadorAtual.Nome + " - " + p.Simbolo);
-                Console.WriteLine();              
+                Console.WriteLine();
             }
             else
             {
