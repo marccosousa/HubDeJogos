@@ -1,5 +1,6 @@
 ﻿using HubDeJogos.Models;
 using HubDeJogos.Exceptions;
+using HubDeJogos.JogoDaVelha.Models;
 
 namespace HubDeJogos.Controllers
 {
@@ -37,7 +38,10 @@ namespace HubDeJogos.Controllers
             {
                 JogadorLogado2 = Jogadores.Find(x => x.Login == login && x.Senha == senha);
                 Logado = true;
-            }            
+            }
+            Console.WriteLine("Login realizado com sucesso! \nDigite qualquer tecla para a próxima tela");
+            Console.WriteLine();
+            Console.ReadKey();
         }
 
         private void ValidaLogin(string login, string senha)

@@ -1,8 +1,9 @@
 ﻿using HubDeJogos.Controllers;
 using HubDeJogos.Exceptions;
 using HubDeJogos.Models;
-using System.Linq.Expressions;
-using System.Security.Cryptography.X509Certificates;
+using HubDeJogos.JogoDaVelha;
+using HubDeJogos.JogoDaVelha.Models;
+using HubDeJogos.JogoDaVelha.Views;
 
 namespace HubDeJogos.Views
 {
@@ -68,9 +69,6 @@ namespace HubDeJogos.Views
                 Console.WriteLine("Digite qualquer tecla para tentar novamente: ");
                 Console.ReadKey();
             }
-            Console.WriteLine("Login realizado com sucesso! \nDigite qualquer tecla para a próxima tela");
-            Console.WriteLine();
-            Console.ReadKey();
 
         }
 
@@ -112,7 +110,7 @@ namespace HubDeJogos.Views
 
         // Menu de jogos
 
-        public static void ImprimeMenuJogos(Hub hub)
+        public static string ImprimeMenuJogos(Hub hub)
         {
             Console.WriteLine("===== HUB DE JOGOS =====");
             Console.WriteLine();
@@ -122,19 +120,7 @@ namespace HubDeJogos.Views
             Console.WriteLine("[2] - Batalha Naval: ");
             Console.Write("Digite a sua opção: ");
             string opcao = Console.ReadLine();
-
-            switch (opcao)
-            {
-                case "1":
-                    Console.WriteLine("Joga da velha aqui");
-                    break;
-                case "2":
-                    Console.WriteLine("Batalha naval aqui!");
-                    break;
-                default:
-                    Console.WriteLine("Opção inválida! Digite novamente.");
-                    break;
-            }
+            return opcao; 
         }
     }
 }
