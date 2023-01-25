@@ -4,13 +4,13 @@ namespace HubDeJogos.JogoDaVelha.Models
 {
     class PartidaVelha
     {
-        public Tabuleiro Tab { get; set; }
-        public Jogador Jogador1 { get; set; }
-        public Jogador Jogador2 { get; set; }
-        public Jogador JogadorAtual {get; set;}
-        public string Simbolo { get; set; }
-        public bool Finalizada { get; set; }
-        public string[,] Mat { get; set; }
+        public Tabuleiro Tab { get; private set; }
+        public Jogador Jogador1 { get; private set; }
+        public Jogador Jogador2 { get; private set; }
+        public Jogador JogadorAtual {get; private set;}
+        public string Simbolo { get; private set; }
+        public bool Finalizada { get; private set; }
+        public string[,] Mat { get; private set; }
 
         public PartidaVelha(Hub hub)
         {
@@ -44,7 +44,7 @@ namespace HubDeJogos.JogoDaVelha.Models
             MudarJogador(); 
         }
 
-        public void ValidaJogada(string posicao)
+        private void ValidaJogada(string posicao)
         {
             for (int L = 0; L < Tab.Linhas; L++)
             {
@@ -73,7 +73,7 @@ namespace HubDeJogos.JogoDaVelha.Models
             }
         }
 
-        public bool FimDeJogo()
+        private bool FimDeJogo()
         {
             // Se o jogo terminar em alguma linha: 
             for (int L = 0; L < 3; L++)
