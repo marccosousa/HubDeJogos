@@ -17,6 +17,7 @@ namespace HubDeJogos.Controllers
             Logado = false;
         }
 
+        //Menu inicial(Cadastro e login); 
         public void RealizaCadastro(string login, string senha, string nome)
         {
             ValidaCadastro(login, senha); 
@@ -68,5 +69,7 @@ namespace HubDeJogos.Controllers
                 throw new HubExceptions("Esse login não está disponível, tente outro.");
             }
         }
+
+        //Menu de jogos
     }
 }

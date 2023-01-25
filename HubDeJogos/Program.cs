@@ -13,6 +13,8 @@ namespace HubDeJogos
                 Console.Clear();
                 Tela.ImprimeMenu(hub); 
             }
+            Console.Clear();
+            Tela.ImprimeMenuJogos(hub);
 
         }
     }

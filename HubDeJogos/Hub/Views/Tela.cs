@@ -2,11 +2,13 @@
 using HubDeJogos.Exceptions;
 using HubDeJogos.Models;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 
 namespace HubDeJogos.Views
 {
     class Tela
     {
+        //Menu inicial
         public static void ImprimeMenu(Hub hub)
         {
             Console.WriteLine("[1] - Logar no Hub de Jogos.");
@@ -23,7 +25,7 @@ namespace HubDeJogos.Views
                         Console.WriteLine("Opção inválida.");
                         break;
                     case "1":
-                        hub.ChecarNumeroJogadores(); 
+                        hub.ChecarNumeroJogadores();
                         do
                         {
                             ImprimeLogin(hub);
@@ -40,7 +42,7 @@ namespace HubDeJogos.Views
                         break;
                 }
             }
-            catch (HubExceptions e) 
+            catch (HubExceptions e)
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Digite qualquer tecla para continuar no menu");
@@ -60,7 +62,7 @@ namespace HubDeJogos.Views
             {
                 hub.RealizaLogin(login, senha);
             }
-            catch (HubExceptions e) 
+            catch (HubExceptions e)
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Digite qualquer tecla para tentar novamente: ");
@@ -89,9 +91,9 @@ namespace HubDeJogos.Views
             catch (HubExceptions e)
             {
                 Console.WriteLine(e.Message);
-                Console.WriteLine("Digite qualquer tecla para tentar novamente."); 
+                Console.WriteLine("Digite qualquer tecla para tentar novamente.");
                 Console.ReadKey();
-            }            
+            }
         }
 
         public static void ImprimeJogadores(Hub hub)
@@ -106,6 +108,33 @@ namespace HubDeJogos.Views
             }
             Console.WriteLine("Pressione qualquer tecla para o menu anterior.");
             Console.ReadKey();
+        }
+
+        // Menu de jogos
+
+        public static void ImprimeMenuJogos(Hub hub)
+        {
+            Console.WriteLine("===== HUB DE JOGOS =====");
+            Console.WriteLine();
+            Console.WriteLine($"Olá {hub.JogadorLogado1.Nome} e {hub.JogadorLogado2.Nome}! Bem-vindos!");
+            Console.WriteLine("Qual jogo vocês querem jogar hoje? ");
+            Console.WriteLine("[1] - Jogo da Velha: ");
+            Console.WriteLine("[2] - Batalha Naval: ");
+            Console.Write("Digite a sua opção: ");
+            string opcao = Console.ReadLine();
+
+            switch (opcao)
+            {
+                case "1":
+                    Console.WriteLine("Joga da velha aqui");
+                    break;
+                case "2":
+                    Console.WriteLine("Batalha naval aqui!");
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida! Digite novamente.");
+                    break;
+            }
         }
     }
 }
