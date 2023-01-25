@@ -21,11 +21,13 @@ namespace HubDeJogos
             {
                 case "1":
                     PartidaVelha p = new PartidaVelha(hub);
-                    Console.Clear();
-                    TelaVelha.ImprimeVelha(p);
-                    TelaVelha.ImprimeJogada(p);
-                    Console.Clear();
-                    TelaVelha.ImprimeVelha(p);
+                    while (!p.Finalizada)
+                    {
+                        Console.Clear();
+                        TelaVelha.ImprimeVelha(p);
+                        TelaVelha.ImprimeJogada(p);
+                        p.FimDeJogo(); 
+                    }
                     break;
                 case "2":
                     Console.WriteLine("Batalha naval aqui");
