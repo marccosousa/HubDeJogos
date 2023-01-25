@@ -37,6 +37,10 @@ namespace HubDeJogos.JogoDaVelha.Models
                     }
                 }
             }
+            if(FimDeJogo())
+            {
+                return; 
+            }
             MudarJogador(); 
         }
 
@@ -69,7 +73,7 @@ namespace HubDeJogos.JogoDaVelha.Models
             }
         }
 
-        public void FimDeJogo()
+        public bool FimDeJogo()
         {
             // Se o jogo terminar em alguma linha: 
             for (int L = 0; L < 3; L++)
@@ -77,6 +81,7 @@ namespace HubDeJogos.JogoDaVelha.Models
                 if (Mat[L, 0] == Mat[L, 1] && Mat[L, 1] == Mat[L, 2])
                 {
                     Finalizada = true;
+                    return true;
                 }
             }
             // Se o jogo terminar em alguma coluna: 
@@ -85,6 +90,7 @@ namespace HubDeJogos.JogoDaVelha.Models
                 if (Mat[0, C] == Mat[1, C] && Mat[1, C] == Mat[2, C])
                 {
                     Finalizada = true;
+                    return true;
                 }
             }
 
@@ -92,11 +98,13 @@ namespace HubDeJogos.JogoDaVelha.Models
             if (Mat[0, 0] == Mat[1, 1] && Mat[1, 1] == Mat[2, 2])
             {
                 Finalizada = true;
+                return true;
             }
             // diagonal secundária
             if (Mat[0, 2] == Mat[1, 1] && Mat[1, 1] == Mat[2, 0])
             {
                 Finalizada = true;
+                return true;
             }
             
             // Quando o jogo termina na última rodada, ele contabiliza a vitória e a velha. Quando termina em velha, é velha mesmo.
@@ -115,7 +123,9 @@ namespace HubDeJogos.JogoDaVelha.Models
             if (contVelha == 0)
             {
                 Finalizada = true;
+                return true;
             }
+            return false; 
         }
 
         private void OrganizaVelha()

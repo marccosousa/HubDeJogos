@@ -23,22 +23,22 @@ namespace HubDeJogos
             {
                 case "1":
                     PartidaVelha p = new PartidaVelha(hub);
-                    while (!p.Finalizada)
+                    do
                     {
                         try
                         {
                             Console.Clear();
                             TelaVelha.ImprimeVelha(p);
                             TelaVelha.ImprimeJogada(p);
-                            p.FimDeJogo();
                         }
-                        catch(PartidaVelhaException e)
+                        catch (PartidaVelhaException e)
                         {
                             Console.WriteLine(e.Message);
                             Console.WriteLine("Digite qualquer tecla para tentar novamente");
                             Console.ReadKey();
                         }
                     }
+                    while (!p.Finalizada);
                     Console.Clear();
                     TelaVelha.ImprimeVelha(p); 
                     break;

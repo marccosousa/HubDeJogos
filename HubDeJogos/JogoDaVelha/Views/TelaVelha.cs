@@ -6,7 +6,7 @@ namespace HubDeJogos.JogoDaVelha.Views
     class TelaVelha
     {
         public static void ImprimeVelha(PartidaVelha p)
-        { 
+        {
             Console.WriteLine("+---+---+---+");
             for (int L = 0; L < p.Tab.Linhas; L++)
             {
@@ -21,14 +21,13 @@ namespace HubDeJogos.JogoDaVelha.Views
 
             Console.WriteLine();
             Console.WriteLine($"{p.Jogador1.Nome} - X vs O - {p.Jogador2.Nome}");
-            if(!p.Finalizada)
+            if (!p.Finalizada)
             {
-                Console.WriteLine();
                 Console.WriteLine("Aguardando vez do " + p.JogadorAtual.Nome + " - " + p.Simbolo);
+                Console.WriteLine();              
             }
             else
             {
-                Console.WriteLine();
                 Console.WriteLine("Vitória: " + p.JogadorAtual.Nome + " - " + p.Simbolo);
             }
         }
@@ -37,7 +36,7 @@ namespace HubDeJogos.JogoDaVelha.Views
         {
             Console.WriteLine($"Vai jogar {p.Simbolo} em qual posicão? ");
             string posicao = Console.ReadLine();
-            p.RealizaJogada(posicao); 
-        } 
+            p.RealizaJogada(posicao);
+        }
     }
 }
