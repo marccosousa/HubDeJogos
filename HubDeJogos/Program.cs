@@ -3,6 +3,8 @@ using HubDeJogos.Models;
 using HubDeJogos.Views;
 using HubDeJogos.JogoDaVelha.Views;
 using HubDeJogos.JogoDaVelha.Models;
+using System.Linq.Expressions;
+using HubDeJogos.JogoDaVelha;
 
 namespace HubDeJogos
 {
@@ -23,11 +25,22 @@ namespace HubDeJogos
                     PartidaVelha p = new PartidaVelha(hub);
                     while (!p.Finalizada)
                     {
-                        Console.Clear();
-                        TelaVelha.ImprimeVelha(p);
-                        TelaVelha.ImprimeJogada(p);
-                        p.FimDeJogo(); 
+                        try
+                        {
+                            Console.Clear();
+                            TelaVelha.ImprimeVelha(p);
+                            TelaVelha.ImprimeJogada(p);
+                            p.FimDeJogo();
+                        }
+                        catch(PartidaVelhaException e)
+                        {
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine("Digite qualquer tecla para tentar novamente");
+                            Console.ReadKey();
+                        }
                     }
+                    Console.Clear();
+                    TelaVelha.ImprimeVelha(p); 
                     break;
                 case "2":
                     Console.WriteLine("Batalha naval aqui");

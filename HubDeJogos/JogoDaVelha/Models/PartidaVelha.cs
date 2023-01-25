@@ -7,6 +7,7 @@ namespace HubDeJogos.JogoDaVelha.Models
         public Tabuleiro Tab { get; set; }
         public Jogador Jogador1 { get; set; }
         public Jogador Jogador2 { get; set; }
+        public Jogador JogadorAtual {get; set;}
         public string Simbolo { get; set; }
         public bool Finalizada { get; set; }
         public string[,] Mat { get; set; }
@@ -17,6 +18,7 @@ namespace HubDeJogos.JogoDaVelha.Models
             Mat = new string[Tab.Linhas, Tab.Colunas];
             Jogador1 = hub.JogadorLogado1;
             Jogador2 = hub.JogadorLogado2;
+            JogadorAtual = Jogador1; 
             Simbolo = "X"; 
             Finalizada = false;
             OrganizaVelha(); 
@@ -24,6 +26,7 @@ namespace HubDeJogos.JogoDaVelha.Models
 
         public void RealizaJogada(string posicao)
         {
+            ValidaJogada(posicao); 
             for (int L = 0; L < Tab.Linhas; L++)
             {
                 for (int C = 0; C < Tab.Colunas; C++)
@@ -37,15 +40,32 @@ namespace HubDeJogos.JogoDaVelha.Models
             MudarJogador(); 
         }
 
+        public void ValidaJogada(string posicao)
+        {
+            for (int L = 0; L < Tab.Linhas; L++)
+            {
+                for (int C = 0; C < Tab.Colunas; C++)
+                {
+                    if (Mat[L, C] == posicao)
+                    {
+                        return;  
+                    }
+                }
+            }
+            throw new PartidaVelhaException("Já existe um símbolo nessa posição!");
+        }
+
         private void MudarJogador()
         {
             if (Simbolo == "X")
             {
                 Simbolo = "O";
+                JogadorAtual = Jogador2; 
             }
             else
             {
                 Simbolo = "X";
+                JogadorAtual = Jogador1;
             }
         }
 
