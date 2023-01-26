@@ -12,7 +12,7 @@ namespace HubDeJogos.BatalhaNaval.Views
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < pb.Tab.Colunas; j++)
                 {
-                    if (pb.Mat[i, j] == null)
+                    if (pb.Mat[i, j] == null || pb.Mat[i, j] == "N")
                     {
                         Console.Write(" ~ ");
                     }
@@ -25,6 +25,14 @@ namespace HubDeJogos.BatalhaNaval.Views
                 Console.WriteLine();
             }
             Console.WriteLine("   a  b  c  d  e  f  g  h");
+
+            Console.WriteLine();
+            Console.WriteLine($"{pb.Jogador1.Nome}  vs  {pb.Jogador2.Nome}");
+            if (!pb.Finalizada)
+            {
+                Console.WriteLine("Aguardando vez do " + pb.JogadorAtual.Nome);
+                Console.WriteLine();
+            }
         }
 
         public static void ImprimeJogada(PartidaBatalha pb)

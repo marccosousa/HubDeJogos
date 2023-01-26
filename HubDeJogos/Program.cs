@@ -41,15 +41,18 @@ namespace HubDeJogos
                     }
                     while (!p.Finalizada);
                     Console.Clear();
-                    TelaVelha.ImprimeVelha(p); 
+                    TelaVelha.ImprimeVelha(p);
                     break;
                 case "2":
                     PartidaBatalha pb = new PartidaBatalha(hub);
-                    TelaBatalha.ImprimeTabuleiro(pb);
-                    TelaBatalha.ImprimeJogada(pb);
-                    Console.Clear();
-                    TelaBatalha.ImprimeTabuleiro(pb);
-                    Console.ReadKey(); 
+                    do
+                    {
+                        Console.Clear();
+                        TelaBatalha.ImprimeTabuleiro(pb);
+                        TelaBatalha.ImprimeJogada(pb);
+                    }
+                    while (!pb.Finalizada); 
+                    Console.ReadKey();
                     break;
                 default:
                     Console.WriteLine("Opcao inválida");
