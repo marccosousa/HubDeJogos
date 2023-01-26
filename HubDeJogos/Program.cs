@@ -3,8 +3,9 @@ using HubDeJogos.Models;
 using HubDeJogos.Views;
 using HubDeJogos.JogoDaVelha.Views;
 using HubDeJogos.JogoDaVelha.Models;
-using System.Linq.Expressions;
 using HubDeJogos.JogoDaVelha;
+using HubDeJogos.BatalhaNaval.Views;
+using HubDeJogos.BatalhaNaval.Models;
 
 namespace HubDeJogos
 {
@@ -43,7 +44,12 @@ namespace HubDeJogos
                     TelaVelha.ImprimeVelha(p); 
                     break;
                 case "2":
-                    Console.WriteLine("Batalha naval aqui");
+                    PartidaBatalha pb = new PartidaBatalha(hub);
+                    TelaBatalha.ImprimeTabuleiro(pb);
+                    TelaBatalha.ImprimeJogada(pb);
+                    Console.Clear();
+                    TelaBatalha.ImprimeTabuleiro(pb);
+                    Console.ReadKey(); 
                     break;
                 default:
                     Console.WriteLine("Opcao inválida");
