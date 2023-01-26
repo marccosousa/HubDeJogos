@@ -8,6 +8,8 @@ namespace HubDeJogos.BatalhaNaval.Models
         public Tabuleiro Tab { get; set; }
         public Jogador Jogador1 { get; set; }
         public Jogador Jogador2 { get; set; }
+        public int PontuacaoJ1 { get; set; }
+        public int PontuacaoJ2 { get; set; }
         public Jogador JogadorAtual { get; set; }
         public bool Finalizada { get; private set; }
         public string[,] Mat { get; private set; }
@@ -18,6 +20,8 @@ namespace HubDeJogos.BatalhaNaval.Models
             Jogador1 = hub.JogadorLogado1;
             Jogador2 = hub.JogadorLogado2;
             JogadorAtual = Jogador1;
+            PontuacaoJ1 = 0;
+            PontuacaoJ2 = 0;
             Finalizada = false;
             Mat = new string[Tab.Linhas, Tab.Colunas];
             ColocarNavios();
@@ -25,9 +29,10 @@ namespace HubDeJogos.BatalhaNaval.Models
 
         public void RealizaJogada(char coluna, int linha)
         {
-            if(VerificarNavio(coluna, linha))
+            if(VerificarNavioAbatido(coluna, linha))
             {
                 Mat[8 - linha, coluna - 'a'] = "X";
+                PontuarAbatidaJogador(); 
             }
             else
             {
@@ -44,7 +49,7 @@ namespace HubDeJogos.BatalhaNaval.Models
             Mat[4, 7] = "N";
         }
 
-        public bool VerificarNavio(char coluna, int linha)
+        public bool VerificarNavioAbatido(char coluna, int linha)
         {
             if (Mat[8 - linha, coluna - 'a'] == "N")
             {
@@ -62,6 +67,18 @@ namespace HubDeJogos.BatalhaNaval.Models
             else
             {
                 JogadorAtual = Jogador1;
+            }
+        }
+
+        public void PontuarAbatidaJogador()
+        {
+            if(JogadorAtual.Equals(Jogador1))
+            {
+                PontuacaoJ1++; 
+            }
+            else
+            {
+                PontuacaoJ2++;
             }
         }
 
