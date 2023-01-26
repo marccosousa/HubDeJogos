@@ -51,7 +51,9 @@ namespace HubDeJogos
                         TelaBatalha.ImprimeTabuleiro(pb);
                         TelaBatalha.ImprimeJogada(pb);
                     }
-                    while (!pb.Finalizada); 
+                    while (!pb.Finalizada);
+                    Console.Clear();
+                    TelaBatalha.ImprimeTabuleiro(pb);
                     Console.ReadKey();
                     break;
                 default:

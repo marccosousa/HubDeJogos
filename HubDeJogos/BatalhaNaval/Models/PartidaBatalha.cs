@@ -1,5 +1,6 @@
 ﻿using HubDeJogos.Controllers;
 using HubDeJogos.Models;
+using System.Runtime.InteropServices;
 
 namespace HubDeJogos.BatalhaNaval.Models
 {
@@ -16,7 +17,7 @@ namespace HubDeJogos.BatalhaNaval.Models
 
         public PartidaBatalha(Hub hub)
         {
-            Tab = new Tabuleiro(8,8);
+            Tab = new Tabuleiro(8, 8);
             Jogador1 = hub.JogadorLogado1;
             Jogador2 = hub.JogadorLogado2;
             JogadorAtual = Jogador1;
@@ -29,40 +30,51 @@ namespace HubDeJogos.BatalhaNaval.Models
 
         public void RealizaJogada(char coluna, int linha)
         {
-            if(VerificarNavioAbatido(coluna, linha))
+            if (VerificarNavioAbatido(coluna, linha))
             {
                 Mat[8 - linha, coluna - 'a'] = "X";
-                PontuarAbatidaJogador(); 
+                PontuarAbatidaJogador();
             }
             else
             {
                 Mat[8 - linha, coluna - 'a'] = "-";
             }
-            MudarJogador(); 
+            if (FimDeJogo())
+            {
+                return;
+            }
+            MudarJogador();
         }
 
         public void ColocarNavios()
         {
-            Mat[0, 2] = "N";
-            Mat[1, 4] = "N";
-            Mat[3, 6] = "N";
-            Mat[4, 7] = "N";
+            Mat[0, 0] = "N";
+            Mat[1, 1] = "N";
+            Mat[2, 2] = "N";
+            Mat[3, 3] = "N";
+            Mat[4, 4] = "N";
+            Mat[5, 5] = "N";
+            Mat[6, 6] = "N";
+            Mat[7, 7] = "N";
+            Mat[0, 1] = "N";
+            Mat[1, 2] = "N";
+            Mat[2, 3] = "N";
         }
 
         public bool VerificarNavioAbatido(char coluna, int linha)
         {
             if (Mat[8 - linha, coluna - 'a'] == "N")
             {
-                return true; 
+                return true;
             }
-            return false; 
+            return false;
         }
 
         public void MudarJogador()
         {
-            if(JogadorAtual == Jogador1)
+            if (JogadorAtual == Jogador1)
             {
-                JogadorAtual = Jogador2; 
+                JogadorAtual = Jogador2;
             }
             else
             {
@@ -72,9 +84,9 @@ namespace HubDeJogos.BatalhaNaval.Models
 
         public void PontuarAbatidaJogador()
         {
-            if(JogadorAtual.Equals(Jogador1))
+            if (JogadorAtual.Equals(Jogador1))
             {
-                PontuacaoJ1++; 
+                PontuacaoJ1++;
             }
             else
             {
@@ -82,5 +94,22 @@ namespace HubDeJogos.BatalhaNaval.Models
             }
         }
 
+        public bool FimDeJogo()
+        {
+            if (PontuacaoJ1 == 6 || PontuacaoJ2 == 6)
+            {
+                if (PontuacaoJ1 == 6)
+                {
+                    JogadorAtual = Jogador1;
+                }
+                else
+                {
+                    JogadorAtual = Jogador2;
+                }
+                Finalizada = true;
+                return true;
+            }
+            return false;
+        }
     }
 }

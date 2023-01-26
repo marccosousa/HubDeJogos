@@ -34,6 +34,11 @@ namespace HubDeJogos.BatalhaNaval.Views
                 Console.WriteLine("Aguardando vez do " + pb.JogadorAtual.Nome);
                 Console.WriteLine();
             }
+            else
+            {
+                Console.WriteLine("Partida finalizada! Vitória de: " + pb.JogadorAtual.Nome);
+                Console.WriteLine();
+            }
         }
 
         public static void ImprimeJogada(PartidaBatalha pb)
