@@ -1,6 +1,6 @@
 ﻿using HubDeJogos.Controllers;
 using HubDeJogos.Models;
-using System.Runtime.InteropServices;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HubDeJogos.BatalhaNaval.Models
 {
@@ -30,6 +30,7 @@ namespace HubDeJogos.BatalhaNaval.Models
 
         public void RealizaJogada(char coluna, int linha)
         {
+            ValidarJogada(coluna, linha); 
             if (VerificarNavioAbatido(coluna, linha))
             {
                 Mat[8 - linha, coluna - 'a'] = "X";
@@ -61,6 +62,17 @@ namespace HubDeJogos.BatalhaNaval.Models
             Mat[2, 3] = "N";
         }
 
+        public void ValidarJogada(char coluna, int linha)
+        {
+            if (coluna - 'a' > 7 || 8 - linha > 7 || coluna - 'a' < 0 || 8 - linha < 0)
+            {
+                throw new BatalhaException("Posição inválida");
+            }
+            if (Mat[8 - linha, coluna - 'a'] == "X")
+            {
+                throw new BatalhaException("O navio dessa posição já foi atingido.");
+            }
+        }
         public bool VerificarNavioAbatido(char coluna, int linha)
         {
             if (Mat[8 - linha, coluna - 'a'] == "N")

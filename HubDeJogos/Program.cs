@@ -6,6 +6,7 @@ using HubDeJogos.JogoDaVelha.Models;
 using HubDeJogos.JogoDaVelha;
 using HubDeJogos.BatalhaNaval.Views;
 using HubDeJogos.BatalhaNaval.Models;
+using HubDeJogos.BatalhaNaval;
 
 namespace HubDeJogos
 {
@@ -47,9 +48,18 @@ namespace HubDeJogos
                     PartidaBatalha pb = new PartidaBatalha(hub);
                     do
                     {
-                        Console.Clear();
-                        TelaBatalha.ImprimeTabuleiro(pb);
-                        TelaBatalha.ImprimeJogada(pb);
+                        try
+                        {
+                            Console.Clear();
+                            TelaBatalha.ImprimeTabuleiro(pb);
+                            TelaBatalha.ImprimeJogada(pb);
+                        }
+                        catch(BatalhaException e)
+                        {
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine("Digite qualquer tecla para tentar novamente");
+                            Console.ReadKey();
+                        }
                     }
                     while (!pb.Finalizada);
                     Console.Clear();
