@@ -1,5 +1,7 @@
 ﻿using HubDeJogos.Controllers;
 using HubDeJogos.Models;
+using System.Xml.Linq;
+
 namespace HubDeJogos.JogoDaVelha.Models
 {
     class PartidaVelha
@@ -7,9 +9,10 @@ namespace HubDeJogos.JogoDaVelha.Models
         public Tabuleiro Tab { get; private set; }
         public Jogador Jogador1 { get; private set; }
         public Jogador Jogador2 { get; private set; }
-        public Jogador JogadorAtual {get; private set;}
+        public Jogador JogadorAtual { get; private set; }
         public string Simbolo { get; private set; }
         public bool Finalizada { get; private set; }
+        public bool Velha { get; private set; }
         public string[,] Mat { get; private set; }
         public int Turno { get; private set; }
 
@@ -19,16 +22,16 @@ namespace HubDeJogos.JogoDaVelha.Models
             Mat = new string[Tab.Linhas, Tab.Colunas];
             Jogador1 = hub.JogadorLogado1;
             Jogador2 = hub.JogadorLogado2;
-            JogadorAtual = Jogador1; 
-            Simbolo = "X"; 
+            JogadorAtual = Jogador1;
+            Simbolo = "X";
             Finalizada = false;
-            Turno = 1; 
-            OrganizaVelha(); 
+            Turno = 1;
+            OrganizaVelha();
         }
 
         public void RealizaJogada(string posicao)
         {
-            ValidaJogada(posicao); 
+            ValidaJogada(posicao);
             for (int L = 0; L < Tab.Linhas; L++)
             {
                 for (int C = 0; C < Tab.Colunas; C++)
@@ -39,27 +42,34 @@ namespace HubDeJogos.JogoDaVelha.Models
                     }
                 }
             }
-            if(FimDeJogo())
+            if (FimDeJogo())
             {
-                return; 
+                return;
             }
             MudarJogador();
-            Turno++; 
+            Turno++;
         }
 
         private void ValidaJogada(string posicao)
         {
+            int aux;
+            int.TryParse(posicao, out aux);
             for (int L = 0; L < Tab.Linhas; L++)
             {
                 for (int C = 0; C < Tab.Colunas; C++)
                 {
+                    if (aux < 1 || aux > 9)
+                    {
+                        throw new PartidaVelhaException("Posicao inválida! Tente novamente");
+                    }
                     if (Mat[L, C] == posicao)
                     {
-                        return;  
-                    }
+                        return;
+                    }                    
                 }
             }
             throw new PartidaVelhaException("Já existe um símbolo nessa posição!");
+
         }
 
         private void MudarJogador()
@@ -67,7 +77,7 @@ namespace HubDeJogos.JogoDaVelha.Models
             if (Simbolo == "X")
             {
                 Simbolo = "O";
-                JogadorAtual = Jogador2; 
+                JogadorAtual = Jogador2;
             }
             else
             {
@@ -109,8 +119,6 @@ namespace HubDeJogos.JogoDaVelha.Models
                 Finalizada = true;
                 return true;
             }
-            
-            // Quando o jogo termina na última rodada, ele contabiliza a vitória e a velha. Quando termina em velha, é velha mesmo.
             int contVelha = 0;
             for (int L = 0; L < 3; L++)
             {
@@ -125,12 +133,12 @@ namespace HubDeJogos.JogoDaVelha.Models
 
             if (contVelha == 0)
             {
+                Velha = true; 
                 Finalizada = true;
                 return true;
             }
-            return false; 
+            return false;
         }
-
         private void OrganizaVelha()
         {
             int cont = 1;
@@ -143,5 +151,5 @@ namespace HubDeJogos.JogoDaVelha.Models
                 }
             }
         }
-    }    
+    }
 }

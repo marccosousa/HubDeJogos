@@ -30,7 +30,14 @@ namespace HubDeJogos.JogoDaVelha.Views
             }
             else
             {
-                Console.WriteLine("Vitória: " + p.JogadorAtual.Nome + " - " + p.Simbolo);
+                if(!p.Velha)
+                {
+                    Console.WriteLine("Vitória: " + p.JogadorAtual.Nome + " - " + p.Simbolo);
+                }
+                else
+                {
+                    Console.WriteLine("Deu velha :("); 
+                }
             }
         }
 
