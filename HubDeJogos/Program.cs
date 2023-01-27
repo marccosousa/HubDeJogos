@@ -19,12 +19,13 @@ namespace HubDeJogos
             {
                 Console.Clear();
                 Tela.ImprimeMenu(hub);
+                if (hub.Logado)
+                {
+                    Console.Clear();
+                    Tela.ImprimeMenuJogos(hub);
+                }
             }
-            while (hub.Logado)
-            {
-                Console.Clear();
-                Tela.ImprimeMenuJogos(hub);
-            }
+            
 
         }
     }

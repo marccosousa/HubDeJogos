@@ -76,7 +76,9 @@ namespace HubDeJogos.Controllers
 
         public void DeslogarHub()
         {
-            Logado = false; 
+            JogadorLogado1 = null;
+            JogadorLogado2 = null;
+            Logado = false;
         }
 
         //Menu de jogos
