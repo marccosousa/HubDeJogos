@@ -6,12 +6,12 @@ namespace HubDeJogos.BatalhaNaval.Models
 {
     class PartidaBatalha
     {
-        public Tabuleiro Tab { get; set; }
-        public Jogador Jogador1 { get; set; }
-        public Jogador Jogador2 { get; set; }
-        public int PontuacaoJ1 { get; set; }
-        public int PontuacaoJ2 { get; set; }
-        public Jogador JogadorAtual { get; set; }
+        public Tabuleiro Tab { get; private set; }
+        public Jogador Jogador1 { get; private set; }
+        public Jogador Jogador2 { get; private set; }
+        public int PontuacaoJ1 { get; private set; }
+        public int PontuacaoJ2 { get; private set; }
+        public Jogador JogadorAtual { get; private set; }
         public bool Finalizada { get; private set; }
         public string[,] Mat { get; private set; }
 
