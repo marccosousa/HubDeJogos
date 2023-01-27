@@ -44,6 +44,7 @@ namespace HubDeJogos.BatalhaNaval.Models
             }
             if (FimDeJogo())
             {
+                Hub.ComunicarVitoria(JogadorAtual); 
                 return;
             }
             MudarJogador();

@@ -49,6 +49,7 @@ namespace HubDeJogos.JogoDaVelha.Models
             }
             if (FimDeJogo())
             {
+                Hub.ComunicarVitoria(JogadorAtual);
                 return;
             }
             MudarJogador();
