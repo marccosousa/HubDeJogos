@@ -62,7 +62,7 @@ namespace HubDeJogos.JogoDaVelha.Views
             {
                 ConsoleColor atual = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write( p.Mat[l, c]);
+                Console.Write(p.Mat[l, c]);
                 Console.ForegroundColor = atual;
             }
             else
