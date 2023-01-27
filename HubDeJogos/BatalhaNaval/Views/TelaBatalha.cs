@@ -29,6 +29,7 @@ namespace HubDeJogos.BatalhaNaval.Views
             else
             {
                 Console.WriteLine("Partida finalizada! Vitória de: " + pb.JogadorAtual.Nome);
+                pb.Hub.ComunicarVitoria(pb.JogadorAtual);
                 Console.WriteLine();
             }
         }

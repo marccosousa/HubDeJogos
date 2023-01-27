@@ -1,6 +1,7 @@
 ﻿using HubDeJogos.Controllers;
 using HubDeJogos.Exceptions;
 using HubDeJogos.Models;
+using HubDeJogos.Models.Enums;
 using HubDeJogos.JogoDaVelha;
 using HubDeJogos.JogoDaVelha.Models;
 using HubDeJogos.JogoDaVelha.Views;
@@ -87,7 +88,7 @@ namespace HubDeJogos.Views
             string nome = Console.ReadLine();
             try
             {
-                hub.RealizaCadastro(login, senha, nome);
+                hub.RealizaCadastro(login, senha, nome, hub);
             }
             catch (HubExceptions e)
             {
@@ -127,7 +128,8 @@ namespace HubDeJogos.Views
             switch (opcao)
             {
                 case "1":
-                    int continuar = 1; 
+                    int continuar = 1;
+                    hub.JogoAtual = Jogo.JogoDaVelha; 
                     do
                     {
                         PartidaVelha p = new PartidaVelha(hub);
@@ -158,7 +160,8 @@ namespace HubDeJogos.Views
                     break;
                 
                 case "2":
-                    continuar = 1; 
+                    continuar = 1;
+                    hub.JogoAtual = Jogo.BatalhaNaval;
                     do
                     {
                         PartidaBatalha pb = new PartidaBatalha(hub);

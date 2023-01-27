@@ -14,12 +14,14 @@ namespace HubDeJogos.BatalhaNaval.Models
         public Jogador JogadorAtual { get; private set; }
         public bool Finalizada { get; private set; }
         public string[,] Mat { get; private set; }
+        public Hub Hub { get; set; }
 
         public PartidaBatalha(Hub hub)
         {
             Tab = new Tabuleiro(8, 8);
             Jogador1 = hub.JogadorLogado1;
             Jogador2 = hub.JogadorLogado2;
+            Hub = hub;
             JogadorAtual = Jogador1;
             PontuacaoJ1 = 0;
             PontuacaoJ2 = 0;

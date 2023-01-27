@@ -34,6 +34,7 @@ namespace HubDeJogos.JogoDaVelha.Views
                 if(!p.Velha)
                 {
                     Console.WriteLine("Vitória: " + p.JogadorAtual.Nome + " - " + p.Simbolo);
+                    p.Hub.ComunicarVitoria(p.JogadorAtual);
                 }
                 else
                 {

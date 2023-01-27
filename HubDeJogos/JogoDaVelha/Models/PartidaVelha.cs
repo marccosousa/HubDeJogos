@@ -1,5 +1,6 @@
 ﻿using HubDeJogos.Controllers;
 using HubDeJogos.Models;
+using HubDeJogos.Models.Enums;
 using System.Xml.Linq;
 
 namespace HubDeJogos.JogoDaVelha.Models
@@ -10,6 +11,8 @@ namespace HubDeJogos.JogoDaVelha.Models
         public Jogador Jogador1 { get; private set; }
         public Jogador Jogador2 { get; private set; }
         public Jogador JogadorAtual { get; private set; }
+        public Jogo Jogo { get; private set; }
+        public Hub Hub { get; private set; }
         public string Simbolo { get; private set; }
         public bool Finalizada { get; private set; }
         public bool Velha { get; private set; }
@@ -22,7 +25,9 @@ namespace HubDeJogos.JogoDaVelha.Models
             Mat = new string[Tab.Linhas, Tab.Colunas];
             Jogador1 = hub.JogadorLogado1;
             Jogador2 = hub.JogadorLogado2;
+            Hub = hub; 
             JogadorAtual = Jogador1;
+            Jogo = Jogo.JogoDaVelha; 
             Simbolo = "X";
             Finalizada = false;
             Turno = 1;
