@@ -14,11 +14,17 @@ namespace HubDeJogos.BatalhaNaval.Views
                 {
                     if (pb.Mat[i, j] == null || pb.Mat[i, j] == "N")
                     {
+                        ConsoleColor atual = Console.ForegroundColor;
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Write(" ~ ");
+                        Console.ForegroundColor = atual;
                     }
                     else
                     {
+                        ConsoleColor atual = Console.ForegroundColor;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write(" " + pb.Mat[i, j] + " ");
+                        Console.ForegroundColor = atual;
 
                     }
                 }

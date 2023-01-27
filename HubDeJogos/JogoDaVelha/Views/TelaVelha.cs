@@ -12,7 +12,8 @@ namespace HubDeJogos.JogoDaVelha.Views
             {
                 for (int C = 0; C < p.Tab.Colunas; C++)
                 {
-                    Console.Write("|  " + p.Mat[L, C]);
+                    Console.Write("|  ");
+                    ImprimeSimbolo(p, L, C); 
                 }
                 Console.Write("|");
                 Console.WriteLine();
@@ -46,6 +47,28 @@ namespace HubDeJogos.JogoDaVelha.Views
             Console.WriteLine($"Vai jogar {p.Simbolo} em qual posicão? ");
             string posicao = Console.ReadLine();
             p.RealizaJogada(posicao);
+        }
+
+        public static void ImprimeSimbolo(PartidaVelha p, int l, int c)
+        {
+            if (p.Mat[l, c] == "X")
+            {
+                ConsoleColor atual = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(p.Mat[l, c]);
+                Console.ForegroundColor = atual;
+            }
+            else if (p.Mat[l, c] == "O")
+            {
+                ConsoleColor atual = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write( p.Mat[l, c]);
+                Console.ForegroundColor = atual;
+            }
+            else
+            {
+                Console.Write(p.Mat[l, c]);
+            }
         }
     }
 }
