@@ -72,6 +72,10 @@ namespace HubDeJogos.BatalhaNaval.Models
             {
                 throw new BatalhaException("O navio dessa posição já foi atingido.");
             }
+            if (Mat[8 - linha, coluna - 'a'] == "-")
+            {
+                throw new BatalhaException("Essa posição já foi atacada e não há navio");
+            }
         }
         public bool VerificarNavioAbatido(char coluna, int linha)
         {

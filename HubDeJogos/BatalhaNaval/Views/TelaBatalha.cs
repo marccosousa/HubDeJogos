@@ -12,21 +12,7 @@ namespace HubDeJogos.BatalhaNaval.Views
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < pb.Tab.Colunas; j++)
                 {
-                    if (pb.Mat[i, j] == null || pb.Mat[i, j] == "N")
-                    {
-                        ConsoleColor atual = Console.ForegroundColor;
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write(" ~ ");
-                        Console.ForegroundColor = atual;
-                    }
-                    else
-                    {
-                        ConsoleColor atual = Console.ForegroundColor;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(" " + pb.Mat[i, j] + " ");
-                        Console.ForegroundColor = atual;
-
-                    }
+                    ImprimePosicoesMar(pb, i, j); 
                 }
                 Console.WriteLine();
             }
@@ -62,6 +48,32 @@ namespace HubDeJogos.BatalhaNaval.Views
             Console.WriteLine();
             Console.WriteLine(pb.Jogador1.Nome + ": [" + pb.PontuacaoJ1 + "]");
             Console.WriteLine(pb.Jogador2.Nome + ": [" + pb.PontuacaoJ2 + "]");
+        }
+
+        public static void ImprimePosicoesMar(PartidaBatalha pb, int i, int j)
+        {
+            if (pb.Mat[i, j] == null || pb.Mat[i, j] == "N")
+            {
+                ConsoleColor atual = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(" ~ ");
+                Console.ForegroundColor = atual;
+            }
+            else if (pb.Mat[i, j] == "-")
+            {
+                ConsoleColor atual = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write(" " + pb.Mat[i, j] + " ");
+                Console.ForegroundColor = atual;
+
+            }
+            else
+            {
+                ConsoleColor atual = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(" " + pb.Mat[i, j] + " ");
+                Console.ForegroundColor = atual;
+            }
         }
     }
 }
