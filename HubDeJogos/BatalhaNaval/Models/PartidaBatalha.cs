@@ -34,7 +34,7 @@ namespace HubDeJogos.BatalhaNaval.Models
             if (VerificarNavioAbatido(coluna, linha))
             {
                 Mat[8 - linha, coluna - 'a'] = "X";
-                PontuarAbatidaJogador();
+                PontuarAbateJogador();
             }
             else
             {
@@ -98,7 +98,7 @@ namespace HubDeJogos.BatalhaNaval.Models
             }
         }
 
-        public void PontuarAbatidaJogador()
+        public void PontuarAbateJogador()
         {
             if (JogadorAtual.Equals(Jogador1))
             {
