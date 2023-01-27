@@ -4,6 +4,9 @@ using HubDeJogos.Models;
 using HubDeJogos.JogoDaVelha;
 using HubDeJogos.JogoDaVelha.Models;
 using HubDeJogos.JogoDaVelha.Views;
+using HubDeJogos.BatalhaNaval.Models;
+using HubDeJogos.BatalhaNaval.Views;
+using HubDeJogos.BatalhaNaval;
 
 namespace HubDeJogos.Views
 {
@@ -110,7 +113,7 @@ namespace HubDeJogos.Views
 
         // Menu de jogos
 
-        public static string ImprimeMenuJogos(Hub hub)
+        public static void ImprimeMenuJogos(Hub hub)
         {
             Console.WriteLine("===== HUB DE JOGOS =====");
             Console.WriteLine();
@@ -118,9 +121,85 @@ namespace HubDeJogos.Views
             Console.WriteLine("Qual jogo vocês querem jogar hoje? ");
             Console.WriteLine("[1] - Jogo da Velha: ");
             Console.WriteLine("[2] - Batalha Naval: ");
+            Console.WriteLine("[3] - Deslogar e voltar ao menu inicial.");
             Console.Write("Digite a sua opção: ");
             string opcao = Console.ReadLine();
-            return opcao; 
+            switch (opcao)
+            {
+                case "1":
+                    int continuar = 1; 
+                    do
+                    {
+                        PartidaVelha p = new PartidaVelha(hub);
+                        do
+                        {
+                            try
+                            {
+                                Console.Clear();
+                                TelaVelha.ImprimeVelha(p);
+                                TelaVelha.ImprimeJogada(p);
+                            }
+                            catch (PartidaVelhaException e)
+                            {
+                                Console.WriteLine(e.Message);
+                                Console.WriteLine("Digite qualquer tecla para tentar novamente");
+                                Console.ReadKey();
+                            }
+                        }
+                        while (!p.Finalizada);
+                        Console.Clear();
+                        TelaVelha.ImprimeVelha(p);
+                        Console.WriteLine();
+                        Console.WriteLine("Deseja jogar uma nova partida? 1 - Sim / 2 - Voltar para o menu de jogos.");
+                        continuar = int.Parse(Console.ReadLine()); 
+                    } while (continuar == 1);
+                    Console.Clear(); 
+                    ImprimeMenuJogos(hub); 
+                    break;
+                
+                case "2":
+                    continuar = 1; 
+                    do
+                    {
+                        PartidaBatalha pb = new PartidaBatalha(hub);
+                        do
+                        {
+                            try
+                            {
+                                Console.Clear();
+                                TelaBatalha.ImprimeTabuleiro(pb);
+                                TelaBatalha.ImprimeJogada(pb);
+                            }
+                            catch (BatalhaException e)
+                            {
+                                Console.WriteLine(e.Message);
+                                Console.WriteLine("Digite qualquer tecla para tentar novamente");
+                                Console.ReadKey();
+                            }
+                        }
+                        while (!pb.Finalizada);
+                        Console.Clear();
+                        TelaBatalha.ImprimeTabuleiro(pb);
+                        Console.WriteLine();
+                        Console.WriteLine("Deseja jogar uma nova partida? 1 - Sim / 2 - Voltar para o menu de jogos.");
+                        continuar = int.Parse(Console.ReadLine());
+                    }
+                    while (continuar == 1); 
+                    Console.Clear();
+                    ImprimeMenuJogos(hub);
+                    break;
+                case "3":
+                    Console.WriteLine("Vocês deslogaram do Hub! Até a próxima! \nDigite qualquer tecla para ir para o menu inicial");
+                    Console.ReadKey(); 
+                    Console.Clear();
+                    hub.DeslogarHub();
+                    ImprimeMenu(hub); 
+                    break; 
+                default:
+                    Console.WriteLine("Opcao inválida. Digite qualquer tecla para tentar novamente!");
+                    Console.ReadKey(); 
+                    break;
+            }
         }
     }
 }

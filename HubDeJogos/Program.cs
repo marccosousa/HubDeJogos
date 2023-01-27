@@ -20,55 +20,10 @@ namespace HubDeJogos
                 Console.Clear();
                 Tela.ImprimeMenu(hub);
             }
-            Console.Clear();
-            switch (Tela.ImprimeMenuJogos(hub))
+            while (hub.Logado)
             {
-                case "1":
-                    PartidaVelha p = new PartidaVelha(hub);
-                    do
-                    {
-                        try
-                        {
-                            Console.Clear();
-                            TelaVelha.ImprimeVelha(p);
-                            TelaVelha.ImprimeJogada(p);
-                        }
-                        catch (PartidaVelhaException e)
-                        {
-                            Console.WriteLine(e.Message);
-                            Console.WriteLine("Digite qualquer tecla para tentar novamente");
-                            Console.ReadKey();
-                        }
-                    }
-                    while (!p.Finalizada);
-                    Console.Clear();
-                    TelaVelha.ImprimeVelha(p);
-                    break;
-                case "2":
-                    PartidaBatalha pb = new PartidaBatalha(hub);
-                    do
-                    {
-                        try
-                        {
-                            Console.Clear();
-                            TelaBatalha.ImprimeTabuleiro(pb);
-                            TelaBatalha.ImprimeJogada(pb);
-                        }
-                        catch(BatalhaException e)
-                        {
-                            Console.WriteLine(e.Message);
-                            Console.WriteLine("Digite qualquer tecla para tentar novamente");
-                            Console.ReadKey();
-                        }
-                    }
-                    while (!pb.Finalizada);
-                    Console.Clear();
-                    TelaBatalha.ImprimeTabuleiro(pb);
-                    Console.ReadKey();
-                    break;
-                default:
-                    Console.WriteLine("Opcao inválida");
-                    break;
+                Console.Clear();
+                Tela.ImprimeMenuJogos(hub);
             }
 
         }

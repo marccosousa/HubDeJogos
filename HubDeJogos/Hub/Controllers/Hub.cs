@@ -74,6 +74,11 @@ namespace HubDeJogos.Controllers
             }
         }
 
+        public void DeslogarHub()
+        {
+            Logado = false; 
+        }
+
         //Menu de jogos
     }
 }
