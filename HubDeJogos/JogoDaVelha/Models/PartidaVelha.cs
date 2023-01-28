@@ -154,6 +154,7 @@ namespace HubDeJogos.JogoDaVelha.Models
                 if (j.Equals(JogadorAtual))
                 {
                     j.PontuarJogador();
+                    JogadoresHub.SerializarJogadores(Hub.Jogadores);
                 }
             }
         }

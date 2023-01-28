@@ -9,7 +9,7 @@ namespace HubDeJogos.Models
         public string Login { get; private set; }
         public string Senha { get; private set; }
         public string Nome { get; private set; }
-        public int Pontuacao { get; private set; }
+        public int Pontuacao { get; set; }
 
         public Jogador(string login, string senha, string nome)
         {
