@@ -21,7 +21,7 @@ namespace HubDeJogos.Views
             Console.WriteLine("[3] - Mostrar jogadores.");
             Console.WriteLine("[4] - Finalizar Hub.");
             Console.Write("Digite a sua opção: ");
-            string opcao = Console.ReadLine();
+            string? opcao = Console.ReadLine();
             try
             {
 
@@ -65,9 +65,9 @@ namespace HubDeJogos.Views
             Console.Clear();
             Console.WriteLine("===== Login =====");
             Console.WriteLine("Digite seu login: ");
-            string login = Console.ReadLine();
+            string? login = Console.ReadLine();
             Console.WriteLine("Digite sua senha: ");
-            string senha = Console.ReadLine();
+            string? senha = Console.ReadLine();
             try
             {
                 hub.RealizaLogin(login, senha);
@@ -86,11 +86,11 @@ namespace HubDeJogos.Views
             Console.Clear();
             Console.WriteLine("===== CADASTRO =====");
             Console.WriteLine("Digite o login que deseja: ");
-            string login = Console.ReadLine();
+            string? login = Console.ReadLine();
             Console.WriteLine("Digite a senha que deseja: ");
-            string senha = Console.ReadLine();
+            string? senha = Console.ReadLine();
             Console.WriteLine("Agora digite o seu nome: ");
-            string nome = Console.ReadLine();
+            string? nome = Console.ReadLine();
             try
             {
                 hub.RealizaCadastro(login, senha, nome);
@@ -129,11 +129,11 @@ namespace HubDeJogos.Views
             Console.WriteLine("[2] - Batalha Naval: ");
             Console.WriteLine("[3] - Deslogar e voltar ao menu inicial.");
             Console.Write("Digite a sua opção: ");
-            string opcao = Console.ReadLine();
+            string? opcao = Console.ReadLine();
             switch (opcao)
             {
                 case "1":
-                    int continuar = 1;
+                    int? continuar = 1;
                     hub.JogoAtual = Jogo.JogoDaVelha; 
                     do
                     {

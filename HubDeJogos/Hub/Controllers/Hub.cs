@@ -25,9 +25,9 @@ namespace HubDeJogos.Controllers
         }
 
         //Menu inicial(Cadastro e login); 
-        public void RealizaCadastro(string login, string senha, string nome)
+        public void RealizaCadastro(string? login, string? senha, string? nome)
         {
-            ValidaCadastro(login, senha);
+            ValidaCadastro(login);
             Jogador jogador = new Jogador(login, senha, nome);
             Jogadores.Add(jogador);
             JogadoresHub.SerializarJogadores(Jogadores);
@@ -35,7 +35,7 @@ namespace HubDeJogos.Controllers
             Console.ReadKey();
         }
 
-        public void RealizaLogin(string login, string senha)
+        public void RealizaLogin(string? login, string? senha)
         {
             ValidaLogin(login, senha);
             if (JogadorLogado1 == null)
@@ -52,7 +52,7 @@ namespace HubDeJogos.Controllers
             Console.ReadKey();
         }
 
-        private void ValidaLogin(string login, string senha)
+        private void ValidaLogin(string? login, string? senha)
         {
             bool logarConta = Jogadores.Exists(x => x.Login == login && x.Senha == senha);
             if (!logarConta)
@@ -74,7 +74,7 @@ namespace HubDeJogos.Controllers
             }
         }
 
-        private void ValidaCadastro(string login, string senha)
+        private void ValidaCadastro(string? login)
         {
             if (Jogadores.Exists(x => x.Login == login))
             {

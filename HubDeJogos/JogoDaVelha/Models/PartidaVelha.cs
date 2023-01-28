@@ -159,8 +159,8 @@ namespace HubDeJogos.JogoDaVelha.Models
                     }
                     else
                     {
-                        Jogador j1 = Hub.Jogadores.Find(x => x.Login == Jogador1.Login);
-                        Jogador j2 = Hub.Jogadores.Find(x => x.Login == Jogador2.Login);
+                        Jogador? j1 = Hub.Jogadores.Find(x => x.Login == Jogador1.Login);
+                        Jogador? j2 = Hub.Jogadores.Find(x => x.Login == Jogador2.Login);
                         j1.PontuarEmpate();
                         j2.PontuarEmpate(); 
                     }
