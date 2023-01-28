@@ -22,6 +22,10 @@ namespace HubDeJogos.Models
         {
             Pontuacao += 3;
         }
+        public void PontuarEmpate()
+        {
+            Pontuacao += 1;
+        }
 
         public override string ToString()
         {

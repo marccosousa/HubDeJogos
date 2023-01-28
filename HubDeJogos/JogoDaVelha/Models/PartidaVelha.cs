@@ -153,7 +153,17 @@ namespace HubDeJogos.JogoDaVelha.Models
             {
                 if (j.Equals(JogadorAtual))
                 {
-                    j.PontuarJogador();
+                    if (!Velha)
+                    {
+                        j.PontuarJogador();
+                    }
+                    else
+                    {
+                        Jogador j1 = Hub.Jogadores.Find(x => x.Login == Jogador1.Login);
+                        Jogador j2 = Hub.Jogadores.Find(x => x.Login == Jogador2.Login);
+                        j1.PontuarEmpate();
+                        j2.PontuarEmpate(); 
+                    }
                     JogadoresHub.SerializarJogadores(Hub.Jogadores);
                 }
             }
