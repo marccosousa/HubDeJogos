@@ -42,6 +42,9 @@ namespace HubDeJogos.Views
                         break;
                     case "3":
                         ImprimeJogadores(hub);
+                        Console.WriteLine("-----------------");
+                        hub.Ranking();
+                        Console.ReadKey(); 
                         break;
                     case "4":
                         Console.WriteLine("Obrigado por ser divertir conosco, até a próxima");

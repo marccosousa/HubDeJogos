@@ -89,5 +89,14 @@ namespace HubDeJogos.Controllers
             Logado = false;
         }
 
+        public void Ranking()
+        {
+            List <Jogador> rank = Jogadores.OrderByDescending(x => x.Pontuacao).ToList();  
+            foreach(Jogador j in rank)
+            {
+                Console.WriteLine(j);
+            }
+        }
+
     }
 }
