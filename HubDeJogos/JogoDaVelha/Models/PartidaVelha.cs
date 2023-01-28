@@ -50,7 +50,7 @@ namespace HubDeJogos.JogoDaVelha.Models
             }
             if (FimDeJogo())
             {
-                PontuarJogador();
+                ComunicarVitoria();
                 return;
             }
             MudarJogador();
@@ -147,14 +147,13 @@ namespace HubDeJogos.JogoDaVelha.Models
             return false;
         }
 
-        public void PontuarJogador()
+        private void ComunicarVitoria()
         {
             foreach (Jogador j in Hub.Jogadores)
             {
                 if (j.Equals(JogadorAtual))
                 {
                     j.PontuarJogador();
-                    JogadoresHub.SerializarJogadores(Hub.Jogadores); 
                 }
             }
         }

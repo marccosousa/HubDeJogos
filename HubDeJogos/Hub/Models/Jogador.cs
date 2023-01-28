@@ -20,7 +20,7 @@ namespace HubDeJogos.Models
         
         public void PontuarJogador()
         {
-            Pontuacao += 3; 
+            Pontuacao += 3;
         }
 
         public override string ToString()
