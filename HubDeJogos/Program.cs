@@ -14,7 +14,7 @@ namespace HubDeJogos
     {
         static void Main(string[] args)
         {
-            Hub hub = new Hub();
+            Hub hub = new Hub(); 
             while (!hub.Logado)
             {
                 Console.Clear();
@@ -24,9 +24,7 @@ namespace HubDeJogos
                     Console.Clear();
                     Tela.ImprimeMenuJogos(hub);
                 }
-            }
-            
-
+            }            
         }
     }
 }
