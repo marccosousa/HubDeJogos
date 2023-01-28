@@ -2,6 +2,10 @@
 using HubDeJogos.Exceptions;
 using HubDeJogos.JogoDaVelha.Models;
 using HubDeJogos.Models.Enums;
+using System.Text.Json;
+using HubDeJogos.Repositories;
+using System.Text.Json.Serialization;
+using HubDeJogos.BatalhaNaval.Models;
 
 namespace HubDeJogos.Controllers
 {
@@ -13,19 +17,20 @@ namespace HubDeJogos.Controllers
         public Jogo JogoAtual { get; set; }
         public bool Logado { get; private set; }
 
-
         public Hub()
         {
-            Jogadores = new List<Jogador>();
+            Jogadores = JogadoresHub.DeserializarJogadores();
             Logado = false;
-            JogoAtual = new Jogo(); 
-    }
+            JogoAtual = new Jogo();
+        }
 
         //Menu inicial(Cadastro e login); 
-        public void RealizaCadastro(string login, string senha, string nome, Hub hub)
+        public void RealizaCadastro(string login, string senha, string nome)
         {
-            ValidaCadastro(login, senha); 
-            Jogadores.Add(new Jogador(login, senha, nome, hub));
+            ValidaCadastro(login, senha);
+            Jogador jogador = new Jogador(login, senha, nome);
+            Jogadores.Add(jogador);
+            JogadoresHub.SerializarJogadores(Jogadores);
             Console.WriteLine("Cadastro realizado com sucesso! \nDigite qualquer tecla para o menu anterior.");
             Console.ReadKey();
         }
@@ -63,9 +68,9 @@ namespace HubDeJogos.Controllers
 
         public void ChecarNumeroJogadores()
         {
-            if(Jogadores.Count < 2)
+            if (Jogadores.Count < 2)
             {
-                throw new HubExceptions("Você precisa cadastrar no mínimo dois usuários para logar no Hub"); ; 
+                throw new HubExceptions("Você precisa cadastrar no mínimo dois usuários para logar no Hub"); ;
             }
         }
 
@@ -84,10 +89,5 @@ namespace HubDeJogos.Controllers
             Logado = false;
         }
 
-        public void ComunicarVitoria(Jogador atual)
-        {
-            atual.AdicionarPontuacao(atual);
-        }
-        //Menu de jogos
     }
 }

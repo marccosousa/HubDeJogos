@@ -1,6 +1,7 @@
 ﻿using HubDeJogos.Controllers;
 using HubDeJogos.Models;
 using HubDeJogos.Models.Enums;
+using HubDeJogos.Repositories;
 using System.Xml.Linq;
 
 namespace HubDeJogos.JogoDaVelha.Models
@@ -49,7 +50,7 @@ namespace HubDeJogos.JogoDaVelha.Models
             }
             if (FimDeJogo())
             {
-                Hub.ComunicarVitoria(JogadorAtual);
+                PontuarJogador();
                 return;
             }
             MudarJogador();
@@ -144,6 +145,18 @@ namespace HubDeJogos.JogoDaVelha.Models
                 return true;
             }
             return false;
+        }
+
+        public void PontuarJogador()
+        {
+            foreach (Jogador j in Hub.Jogadores)
+            {
+                if (j.Equals(JogadorAtual))
+                {
+                    j.PontuarJogador();
+                    JogadoresHub.SerializarJogadores(Hub.Jogadores); 
+                }
+            }
         }
         private void OrganizaVelha()
         {

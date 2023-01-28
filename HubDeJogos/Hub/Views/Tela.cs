@@ -19,6 +19,7 @@ namespace HubDeJogos.Views
             Console.WriteLine("[1] - Logar no Hub de Jogos.");
             Console.WriteLine("[2] - Cadastrar novo jogador.");
             Console.WriteLine("[3] - Mostrar jogadores.");
+            Console.WriteLine("[4] - Finalizar Hub.");
             Console.Write("Digite a sua opção: ");
             string opcao = Console.ReadLine();
             try
@@ -42,6 +43,10 @@ namespace HubDeJogos.Views
                     case "3":
                         ImprimeJogadores(hub);
                         break;
+                    case "4":
+                        Console.WriteLine("Obrigado por ser divertir conosco, até a próxima");
+                        Environment.Exit(0);
+                        break; 
                     default:
                         Console.WriteLine("Opção inválida! Digite novamente.");
                         break;
@@ -88,7 +93,7 @@ namespace HubDeJogos.Views
             string nome = Console.ReadLine();
             try
             {
-                hub.RealizaCadastro(login, senha, nome, hub);
+                hub.RealizaCadastro(login, senha, nome);
             }
             catch (HubExceptions e)
             {
