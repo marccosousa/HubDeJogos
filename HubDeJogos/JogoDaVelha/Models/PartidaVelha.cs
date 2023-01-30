@@ -155,7 +155,7 @@ namespace HubDeJogos.JogoDaVelha.Models
                 {
                     if (!Velha)
                     {
-                        j.PontuarJogador();
+                        j.PontuarJogadorVelha();
                     }
                     else
                     {

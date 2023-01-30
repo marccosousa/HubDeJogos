@@ -138,7 +138,7 @@ namespace HubDeJogos.BatalhaNaval.Models
             {
                 if (j.Equals(JogadorAtual))
                 {
-                    j.PontuarJogador();
+                    j.PontuarJogadorBatalha();
                     JogadoresHub.SerializarJogadores(Hub.Jogadores);
                 }
             }

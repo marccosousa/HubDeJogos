@@ -10,17 +10,27 @@ namespace HubDeJogos.Models
         public string? Senha { get; private set; }
         public string? Nome { get; private set; }
         public int Pontuacao { get; set; }
+        public int VitoriaVelha { get; set; }
+        public int VitoriaBatalha { get; set; }
 
+        [JsonConstructor]
         public Jogador(string? login, string? senha, string? nome)
         {
             Login = login;
             Senha = senha;
             Nome = nome;
         }
-        
-        public void PontuarJogador()
+
+        public void PontuarJogadorVelha()
         {
             Pontuacao += 3;
+            VitoriaVelha++;
+        }
+
+        public void PontuarJogadorBatalha()
+        {
+            VitoriaBatalha++;
+            Pontuacao += 2;
         }
         public void PontuarEmpate()
         {
@@ -29,7 +39,7 @@ namespace HubDeJogos.Models
 
         public override string ToString()
         {
-            return $"Nome: {Nome} | Login: {Login} | Pontuação: {Pontuacao}"; 
+            return $"Nome: {Nome} \nVitórias Jogo da Velha: {VitoriaVelha} | Vitórias Batalha naval: {VitoriaBatalha} | Pontuação: {Pontuacao}";
         }
     }
 }

@@ -23,7 +23,7 @@ namespace HubDeJogos.Controllers
             Logado = false;
             JogoAtual = new Jogo();
         }
-
+        
         //Menu inicial(Cadastro e login); 
         public void RealizaCadastro(string? login, string? senha, string? nome)
         {
@@ -87,15 +87,6 @@ namespace HubDeJogos.Controllers
             JogadorLogado1 = null;
             JogadorLogado2 = null;
             Logado = false;
-        }
-
-        public void Ranking()
-        {
-            List <Jogador> rank = Jogadores.OrderByDescending(x => x.Pontuacao).ToList();  
-            foreach(Jogador j in rank)
-            {
-                Console.WriteLine(j);
-            }
         }
 
     }

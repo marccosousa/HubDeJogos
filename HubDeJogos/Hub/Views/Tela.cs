@@ -18,7 +18,7 @@ namespace HubDeJogos.Views
         {
             Console.WriteLine("[1] - Logar no Hub de Jogos.");
             Console.WriteLine("[2] - Cadastrar novo jogador.");
-            Console.WriteLine("[3] - Mostrar jogadores.");
+            Console.WriteLine("[3] - Mostrar ranking de jogadores.");
             Console.WriteLine("[4] - Finalizar Hub.");
             Console.Write("Digite a sua opção: ");
             string? opcao = Console.ReadLine();
@@ -41,10 +41,7 @@ namespace HubDeJogos.Views
                         ImprimeCadastro(hub);
                         break;
                     case "3":
-                        ImprimeJogadores(hub);
-                        Console.WriteLine("-----------------");
-                        hub.Ranking();
-                        Console.ReadKey(); 
+                        ImprimeRanking(hub);                        
                         break;
                     case "4":
                         Console.WriteLine("Obrigado por ser divertir conosco, até a próxima");
@@ -106,18 +103,19 @@ namespace HubDeJogos.Views
             }
         }
 
-        public static void ImprimeJogadores(Hub hub)
+        public static void ImprimeRanking(Hub hub)
         {
-            Console.Clear();
-            Console.WriteLine("Jogadores cadastrados: ");
+            Console.Clear(); 
+            Console.WriteLine("===== RANKING DE JOGADORES ====");
+            List<Jogador> rank = hub.Jogadores.OrderByDescending(x => x.Pontuacao).ToList();
             Console.WriteLine();
-            foreach (Jogador j in hub.Jogadores)
+            foreach (Jogador j in rank)
             {
                 Console.WriteLine(j);
                 Console.WriteLine();
             }
-            Console.WriteLine("Pressione qualquer tecla para o menu anterior.");
-            Console.ReadKey();
+            Console.WriteLine("Pressione qualquer tecla para voltar para o menu.");
+            Console.ReadKey(); 
         }
 
         // Menu de jogos
