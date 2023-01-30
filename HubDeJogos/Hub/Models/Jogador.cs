@@ -1,6 +1,4 @@
-﻿using HubDeJogos.Controllers;
-using HubDeJogos.Models.Enums;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace HubDeJogos.Models
 {

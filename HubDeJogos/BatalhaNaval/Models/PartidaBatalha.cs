@@ -1,7 +1,6 @@
 ﻿using HubDeJogos.Controllers;
 using HubDeJogos.Models;
 using HubDeJogos.Repositories;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HubDeJogos.BatalhaNaval.Models
 {

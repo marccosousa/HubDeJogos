@@ -2,7 +2,6 @@
 using HubDeJogos.Models;
 using HubDeJogos.Models.Enums;
 using HubDeJogos.Repositories;
-using System.Xml.Linq;
 
 namespace HubDeJogos.JogoDaVelha.Models
 {

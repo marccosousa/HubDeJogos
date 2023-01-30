@@ -1,6 +1,4 @@
 ﻿using HubDeJogos.BatalhaNaval.Models;
-using HubDeJogos.Models;
-using HubDeJogos.Views;
 
 namespace HubDeJogos.BatalhaNaval.Views
 {
@@ -105,7 +103,7 @@ namespace HubDeJogos.BatalhaNaval.Views
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write("- ");
             Console.ForegroundColor = atual;
-            Console.WriteLine(" (POSIÇÃO ATACADA MAS NÃO ANTINGIU NAVIO)");
+            Console.WriteLine(" (POSIÇÃO ATACADA MAS NÃO ATINGIU NAVIO)");
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("X ");

@@ -1,5 +1,4 @@
-﻿using HubDeJogos; 
-namespace HubDeJogos.Exceptions
+﻿namespace HubDeJogos.Exceptions
 {
     class HubExceptions : Exception
     {

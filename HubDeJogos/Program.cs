@@ -1,13 +1,5 @@
 ﻿using HubDeJogos.Controllers;
-using HubDeJogos.Models;
 using HubDeJogos.Views;
-using HubDeJogos.JogoDaVelha.Views;
-using HubDeJogos.JogoDaVelha.Models;
-using HubDeJogos.JogoDaVelha;
-using HubDeJogos.BatalhaNaval.Views;
-using HubDeJogos.BatalhaNaval.Models;
-using HubDeJogos.BatalhaNaval;
-
 namespace HubDeJogos
 {
     class Program

@@ -1,11 +1,7 @@
 ﻿using HubDeJogos.Models;
 using HubDeJogos.Exceptions;
-using HubDeJogos.JogoDaVelha.Models;
 using HubDeJogos.Models.Enums;
-using System.Text.Json;
 using HubDeJogos.Repositories;
-using System.Text.Json.Serialization;
-using HubDeJogos.BatalhaNaval.Models;
 
 namespace HubDeJogos.Controllers
 {
