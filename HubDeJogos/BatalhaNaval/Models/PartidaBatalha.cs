@@ -53,16 +53,16 @@ namespace HubDeJogos.BatalhaNaval.Models
         public void ColocarNavios()
         {
             Mat[0, 0] = "N";
-            Mat[1, 1] = "N";
-            Mat[2, 2] = "N";
-            Mat[3, 3] = "N";
-            Mat[4, 4] = "N";
-            Mat[5, 5] = "N";
-            Mat[6, 6] = "N";
-            Mat[7, 7] = "N";
             Mat[0, 1] = "N";
+            Mat[0, 2] = "N";
+            Mat[0, 3] = "N";
+            Mat[0, 4] = "N";
+            Mat[0, 5] = "N";
+            Mat[0, 6] = "N";
+            Mat[0, 7] = "N";
+            Mat[1, 0] = "N";
+            Mat[1, 1] = "N";
             Mat[1, 2] = "N";
-            Mat[2, 3] = "N";
         }
 
         public void ValidarJogada(char coluna, int linha)
