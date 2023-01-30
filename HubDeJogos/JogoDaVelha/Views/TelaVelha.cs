@@ -1,5 +1,6 @@
 ﻿using HubDeJogos.JogoDaVelha.Models;
 using HubDeJogos.Models;
+using HubDeJogos.Views;
 
 namespace HubDeJogos.JogoDaVelha.Views
 {
@@ -7,6 +8,7 @@ namespace HubDeJogos.JogoDaVelha.Views
     {
         public static void ImprimeVelha(PartidaVelha p)
         {
+            ImprimeLegendaVelha(); 
             Console.WriteLine("+---+---+---+");
             for (int L = 0; L < p.Tab.Linhas; L++)
             {
@@ -44,7 +46,7 @@ namespace HubDeJogos.JogoDaVelha.Views
 
         public static void ImprimeJogada(PartidaVelha p)
         {
-            Console.WriteLine($"Vai jogar {p.Simbolo} em qual posicão? ");
+            Console.Write($"Vai jogar {p.Simbolo} em qual posicão? ");
             string posicao = Console.ReadLine();
             p.RealizaJogada(posicao);
         }
@@ -69,6 +71,16 @@ namespace HubDeJogos.JogoDaVelha.Views
             {
                 Console.Write(p.Mat[l, c]);
             }
+        }
+
+        public static void ImprimeLegendaVelha()
+        {
+            ConsoleColor atual = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("============ H U B  DE  J O G O S ==============");
+            Console.WriteLine("========== J O G O  DA  V E L H A ==============");
+            Console.ForegroundColor = atual;
+            Console.WriteLine();
         }
     }
 }

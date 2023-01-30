@@ -1,5 +1,6 @@
 ﻿using HubDeJogos.BatalhaNaval.Models;
 using HubDeJogos.Models;
+using HubDeJogos.Views;
 
 namespace HubDeJogos.BatalhaNaval.Views
 {
@@ -7,6 +8,7 @@ namespace HubDeJogos.BatalhaNaval.Views
     {
         public static void ImprimeTabuleiro(PartidaBatalha pb)
         {
+            ImprimeLegendaBatalha(); 
             for (int i = 0; i < pb.Tab.Linhas; i++)
             {
                 Console.Write(8 - i + " ");
@@ -20,10 +22,9 @@ namespace HubDeJogos.BatalhaNaval.Views
             Console.WriteLine();
             ImprimeAbatidas(pb); 
             Console.WriteLine();
-            Console.WriteLine($"{pb.Jogador1.Nome}  vs  {pb.Jogador2.Nome}");
             if (!pb.Finalizada)
             {
-                Console.WriteLine("Aguardando vez do " + pb.JogadorAtual.Nome);
+                Console.WriteLine("Aguardando vez de " + pb.JogadorAtual.Nome);
                 Console.WriteLine();
             }
             else
@@ -35,7 +36,7 @@ namespace HubDeJogos.BatalhaNaval.Views
 
         public static void ImprimeJogada(PartidaBatalha pb)
         {
-            Console.WriteLine("Digite o destino da jogada: ");
+            Console.Write("Digite o destino da jogada: ");
             string s = Console.ReadLine();
             char coluna = s[0];
             int linha = int.Parse(s[1] + "");
@@ -45,9 +46,8 @@ namespace HubDeJogos.BatalhaNaval.Views
         public static void ImprimeAbatidas(PartidaBatalha pb)
         {
             Console.WriteLine("Pontuação de navios abatidos: ");
-            Console.WriteLine();
-            Console.WriteLine(pb.Jogador1.Nome + ": [" + pb.PontuacaoJ1 + "]");
-            Console.WriteLine(pb.Jogador2.Nome + ": [" + pb.PontuacaoJ2 + "]");
+            Console.WriteLine(pb.Jogador1.Nome + ": \t[" + pb.PontuacaoJ1 + "]");
+            Console.WriteLine(pb.Jogador2.Nome + ": \t[" + pb.PontuacaoJ2 + "]");
         }
 
         public static void ImprimePosicoesMar(PartidaBatalha pb, int i, int j)
@@ -74,6 +74,44 @@ namespace HubDeJogos.BatalhaNaval.Views
                 Console.Write(" " + pb.Mat[i, j] + " ");
                 Console.ForegroundColor = atual;
             }
+        }
+
+        public static void ImprimeInformacoesBatalha()
+        {
+            Console.Clear();
+            Console.WriteLine("Antes de começarmos, algumas informações: ");
+            Console.WriteLine();
+            Console.WriteLine("[1] Esse jogo é uma releitura do clássico jogo batalha naval.");
+            Console.WriteLine("[2] Nessa versão, ambos os jogadores estarão no mesmo mar. \n[3] No mar, há 11 navios(1x1).");
+            Console.WriteLine("[4] Ganha o jogador que conseguir afundar mais navios.");
+            Console.WriteLine();
+            Console.Write("[X] Digite qualquer tecla para ir ao jogo! ");
+            Console.ReadKey();
+        }
+
+        private static void ImprimeLegendaBatalha()
+        {
+            ConsoleColor atual = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("============ H U B  DE  J O G O S ==============");
+            Console.WriteLine("========== B A T A L H A  N A V A L ============");
+            Console.ForegroundColor = atual;
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("~ ");
+            Console.ForegroundColor = atual;
+            Console.WriteLine(" (POSIÇÃO AINDA NÃO FOI ATACADA)");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("- ");
+            Console.ForegroundColor = atual;
+            Console.WriteLine(" (POSIÇÃO ATACADA MAS NÃO ANTINGIU NAVIO)");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("X ");
+            Console.ForegroundColor = atual;
+            Console.WriteLine(" (POSIÇÃO ATACADA E NAVIO ATINGIDO)");
+            Console.WriteLine();
         }
     }
 }

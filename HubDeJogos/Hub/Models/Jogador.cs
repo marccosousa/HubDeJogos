@@ -39,7 +39,7 @@ namespace HubDeJogos.Models
 
         public override string ToString()
         {
-            return $"Nome: {Nome} \nVitórias Jogo da Velha: {VitoriaVelha} | Vitórias Batalha naval: {VitoriaBatalha} | Pontuação: {Pontuacao}";
+            return $"Nome: {Nome} \nVitórias Jogo da Velha: {VitoriaVelha} | Vitórias Batalha naval: {VitoriaBatalha} | Pontuação: ";
         }
     }
 }
