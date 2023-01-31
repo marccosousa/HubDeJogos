@@ -2,7 +2,7 @@
  </h1>
 Hub desenvolvido desenvolvido para o programa de formação SharpCoders.
 
-Nesse programa você poderá escolher entre jogar jogo da velha e uma releitura do jogo batalha naval batalha naval. 
+Nesse programa você poderá escolher entre jogar jogo da velha e uma releitura do jogo batalha naval. 
 
 <h4 align="center"> 
 	🚧  HUB DE JOGOS 🚀 Concluído...  🚧
